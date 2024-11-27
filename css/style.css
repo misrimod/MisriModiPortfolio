@@ -2,21 +2,22 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f5f5dc; /* Cream */
-  color: #083d77; /* Navy blue */
+  font-family: Georgia, Helvetica, sans-serif, sans-serif;
+  background-color: #083d77; /* Cream */
+  color: #f5f5dc; /* Navy blue */
   scroll-behavior: smooth; /* Smooth scrolling effect */
 }
 
 /* Navbar */
 nav {
-  position: ab;
+  position: fixed; /* Keeps the navbar at the top */
   top: 0;
   right: 0;
   left: 0;
-  background-color: transparent; /* Remove blue stripe */
+  background-color: #f5f5dc; /* Cream color for the navbar */
   padding: 10px 20px;
   z-index: 1000;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
 }
 
 nav ul {
@@ -26,18 +27,31 @@ nav ul {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
+  font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #083d77; /* Navy blue for better visibility */
+  color:  #C9822C; 
   font-size: 18px;
   font-weight: bold; /* Make links stand out */
   transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  color: #2a9d8f; /* Green on hover */
+  opacity: 75%; /* Green on hover */
+}
+
+
+.letter {
+  display: inline-block;
+  transition: transform 0.7s ease, opacity 0.2s ease;
+  padding: 0; /* Reset padding as we will handle spacing differently */
+}
+
+.space {
+  display: inline-block;
+  width: 10px; /* Adjust width to create space between words */
 }
 
 /* Introduction Section */
@@ -45,32 +59,32 @@ nav ul li a:hover {
   display: flex; /* Use flexbox for horizontal alignment */
   justify-content: flex-start; /* Start aligning elements from the left */
   align-items: center; /* Vertically center the content */
-  height: 50vh; /* Full viewport height */
-  padding: 170px;
+  height: auto; /* Adjust height for mobile */
+  padding: 50px; /* Reduce padding for mobile */
+  flex-direction: column; /* Stack elements vertically for mobile */
 }
 
 #introduction-section h1 {
-  font-size: 48px;
-  margin: 0; /* Remove default margin for better spacing */
-  color: #083d77;
-  flex: 1; /* Allow the text to take up available space */
+  font-size: 24px; /* Smaller font size for mobile */
+  margin: 0 0 20px 0; /* Margin-bottom for spacing */
+  color:  #f5f5dc;
 }
 
 #introduction-section img {
-  max-width: 800px; /* Image size */
-  max-height: 600px; /* Image size */
+  width: 200px; /* Image size for mobile */
+  height: 200px; /* Image size for mobile */
   border-radius: 50%; /* Make the image a circle */
   object-fit: cover;
-  border: 5px solid #083d77; /* Blue border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  border: 3px solid #083d77; /* Blue border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   flex-shrink: 0; /* Prevent the image from shrinking */
 }
 
 /* Image container for flip effect */
 #introduction-section .intro-image-container {
   position: relative;
-  width: 400px; /* Image container size */
-  height: 600px; /* Image container size */
+  width: 200px; /* Image container size for mobile */
+  height: 200px; /* Image container size for mobile */
   perspective: 1000px; /* Give the container 3D perspective */
 }
 
@@ -81,8 +95,8 @@ nav ul li a:hover {
   height: 100%;
   object-fit: cover;
   border-radius: 50%; /* Make it circular */
-  border: 5px solid #083d77; /* Blue border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  border: 3px solid  #f5f5dc; /* cream border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   transition: transform 0.6s ease, opacity 0.6s ease; /* Smooth flip transition */
 }
 
@@ -104,13 +118,110 @@ nav ul li a:hover {
   transform: rotateY(0deg); /* Bring the second image to the front */
 }
 
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  #introduction-section {
+    height: 50vh; /* Full viewport height */
+    padding: 170px;
+    flex-direction: row; /* Align items horizontally */
+  }
+
+  #introduction-section h1 {
+    font-size: 55px;
+    margin: 0; /* Remove default margin for better spacing */
+    flex: 1; /* Allow the text to take up available space */
+  }
+
+  #introduction-section img {
+    max-width: 800px; /* Image size for larger screens */
+    max-height: 600px; /* Image size for larger screens */
+    border: 5px solid #083d77; /* Blue border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+
+  /* Image container for flip effect */
+  #introduction-section .intro-image-container {
+    width: 400px; /* Image container size for larger screens */
+    height: 600px; /* Image container size for larger screens */
+  }
+
+  /* The image itself */
+  #introduction-section img {
+    border: 5px solid #083d77; /* Blue border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+}
+
+/* Skills Section */
+#skills {
+  padding: 100px 20px;
+  background-color: #C9822C; /* Burnt sienna */
+  color: #f5f5dc; /* Cream */
+  text-align: center;
+}
+
+#skills .content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#skills .text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #f5f5dc; /* Cream */
+}
+
+#skills .text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #f5f5dc; /* Cream */
+}
+
+#skills .icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+#skills .icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#skills .icon img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  border: 2px solid #f5f5dc; /* Cream border for visibility */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #fff; /* Optional white background for extra visibility */
+}
+
+#skills .icon img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+#skills .icon p {
+  font-size: 16px;
+  margin: 0;
+  color: #f5f5dc; /* Cream text */
+}
+
+
 
 
 /* About and Projects Sections */
 #about, #projects {
   padding: 100px 20px; /* Large padding for readability */
   background-color: #f5f5dc; /* Cream */
-  color: #083d77;
+  color: #083d77 ;
 }
 
 /* About Section */
@@ -120,8 +231,8 @@ nav ul li a:hover {
   justify-content: center;
   height: 100vh; /* Full viewport height */
   padding: 20px;
-  background-color: #083d77; /* Contrast background */
-  color: #f5f5dc;
+  background-color: #f5f5dc; /* Contrast background */
+  color: #083d77;
 }
 
 #about .content {
@@ -169,7 +280,8 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #f5f5dc; /* Cream */
+  background-color: #083d77; /* Cream */
+  color: #f5f5dc;
 }
 
 .project {
@@ -214,7 +326,50 @@ hr {
   width: 80%;
   max-width: 1200px;
   border: 0;
-  border-top: 2px solid #2a9d8f; /* Green divider */
+  border-top: 2px solid #f5f5dc; /* Green divider */
   margin: 50px 0;
+} 
+
+/* Footer Section */
+#footer {
+  background-color: #083d77; /* Dark blue */
+  color: #f5f5dc; /* Cream */
+  padding: 20px 10px;
+  text-align: center;
 }
+
+#footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#footer .links {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#footer .links a {
+  color: #f5f5dc; /* Cream */
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+#footer .links a:hover {
+  color: #E97451; /* Burnt sienna */
+}
+
+#footer .links span {
+  color: #f5f5dc; /* Cream */
+}
+
+#footer .footer-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#footer .footer-text p {
+  margin: 5px 0;
+}
+
 
