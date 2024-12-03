@@ -3,50 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1: Designing for Ethical and Humane Warehouses</title>
+    <title>Designing for Ethical and Humane Warehouses</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   <!-- Navigation Bar -->
-<header id="navbar">
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li>
-                <a href="#projects">Projects</a>
-                <ul class="dropdown">
-                    <li><a href="project1.html">Project 1</a></li>
-                    <li><a href="project2.html">Project 2</a></li>
-                    <li><a href="project3.html">Project 3</a></li>
-                </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
+    <!-- Navigation Bar -->
+    <header id="navbar">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Main Content -->
     <main id="project-page">
-        <header>
+        <section id="intro">
             <h1>Designing for Ethical and Humane Warehouses</h1>
-        </header>
-        <section>
-            <p>
-                Recently participated in a designathon with my professional fraternity, Alpha Theta Delta. 
-                The prompt was to improve efficiency in an e-commerce warehouse. Our team initially struggled 
-                to balance the needs of diverse roles, such as pickers, managers, and inventory trackers, without 
-                compromising usability. I proposed dividing the problem into sections based on roles and 
-                brainstorming tailored solutions for each. After many discussions to ensure every perspective 
-                was considered, we created a system with distinct interfaces and designs for each role, optimizing 
-                workflows while maintaining a cohesive design language. This experience emphasized the importance 
-                of collaboration and flexibility in problem-solving.
-            </p>
-            <div class="image">
-                <img src="projectimage/proj1.1.png" alt="Low fidelity prototype of warehouse system interface">
-                <img src="projectimage/proj1.2.png" alt="Low-fidelity of larger screen">
+            <p>How we solved chaos in a bustling e-commerce warehouse, one design step at a time.</p>
+        </section>
+
+        <section id="prompt">
+            <h2>The Challenge</h2>
+            <ul>
+                <li><strong>Problem:</strong> Fragmented communication and fluctuating workflows disrupt efficiency.</li>
+                <li><strong>Key Players:</strong> Pickers, Packers, and Shippers.</li>
+                <li><strong>Peak Hours:</strong> 10 AM - 1 PM and 8 PM - 9 PM, with 50% order surges.</li>
+            </ul>
+            <p>We needed a flexible, real-time system that integrates their tasks without rigid workflows.</p>
+        </section>
+
+        <section id="solution">
+            <h2>Our Solution</h2>
+            <div class="feature">
+                <h3>Pickers (Mobile View)</h3>
+                <ul>
+                    <li>Optimized task list and routes.</li>
+                    <li>Real-time updates for priority changes.</li>
+                    <li>Error reporting and progress tracking.</li>
+                </ul>
+            </div>
+            <div class="feature">
+                <h3>Packers (Dashboard)</h3>
+                <ul>
+                    <li>Incoming item alerts and status tracking.</li>
+                    <li>Surge management with overflow areas.</li>
+                </ul>
+            </div>
+            <div class="feature">
+                <h3>Shippers (Dashboard)</h3>
+                <ul>
+                    <li>Label printing queue with quick actions.</li>
+                    <li>Final checks for order accuracy.</li>
+                </ul>
             </div>
         </section>
+
+        <section id="journey">
+            <h2>Our Design Journey</h2>
+            <ol>
+                <li><strong>Step 1:</strong> Identified key issues through role-based analysis.</li>
+                <li><strong>Step 2:</strong> Brainstormed solutions tailored to each role.</li>
+                <li><strong>Step 3:</strong> Developed low-fidelity prototypes for mobile and dashboard interfaces.</li>
+                <li><strong>Step 4:</strong> Iterated designs based on team feedback.</li>
+            </ol>
+        </section>
+
+        <section id="prototype">
+            <h2>Low-Fidelity Prototypes</h2>
+            <div class="image-gallery">
+                <img src="projectimage/proj1.1.png" alt="Pickers' Mobile Interface">
+                <img src="projectimage/proj1.2.png" alt="Dashboard for Packers and Shippers">
+            </div>
+        </section>
+
         <a href="index.html" class="back-button">Back to Portfolio</a>
     </main>
 
@@ -58,4 +90,5 @@
     <script src="js/effects.js"></script>
 </body>
 </html>
+
 
