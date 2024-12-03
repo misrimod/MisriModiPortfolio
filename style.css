@@ -30,17 +30,77 @@ nav ul {
   font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
+nav ul li {
+  position: relative; /* Needed for dropdown positioning */
+}
+
 nav ul li a {
   text-decoration: none;
-  color:  #C9822C; 
+  color: #083d77; 
   font-size: 18px;
   font-weight: bold; /* Make links stand out */
   transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  opacity: 75%; /* Green on hover */
+  opacity: 75%; 
 }
+
+/* Dropdown */
+nav ul .dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Positioning below the parent */
+  left: 0;
+  background-color: #f5f5dc; /* Same as navbar */
+  list-style: none;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+nav ul li:hover .dropdown {
+  display: block; /* Show dropdown on hover */
+}
+
+nav ul .dropdown li {
+  padding: 5px 0;
+}
+
+nav ul .dropdown li a {
+  font-size: 13px;
+  font-weight: normal;
+  color: #9d5a09; /* Keep the same color */
+}
+
+nav ul .dropdown li a:hover {
+  opacity: 75%;
+} 
+
+/* Accessibility Styles */
+nav ul .dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f5f5dc; /* Same as navbar */
+  list-style: none;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+nav ul li:focus-within .dropdown {
+  display: block; /* Show dropdown when parent is focused */
+}
+
+nav ul .dropdown li a:focus {
+  outline: 2px solid #C9822C; /* Add a focus indicator for accessibility */
+}
+
+nav ul li a:focus {
+  outline: 2px solid #C9822C; /* Highlight focused link */
+}
+
+
 
 
 .letter {
@@ -56,106 +116,138 @@ nav ul li a:hover {
 
 /* Introduction Section */
 #introduction-section {
-  display: flex; /* Use flexbox for horizontal alignment */
-  justify-content: flex-start; /* Start aligning elements from the left */
-  align-items: center; /* Vertically center the content */
-  height: auto; /* Adjust height for mobile */
-  padding: 50px; /* Reduce padding for mobile */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Vertically align content */
+  height: auto;
+  padding: 50px;
   flex-direction: column; /* Stack elements vertically for mobile */
+  min-height: 100vh; /* Make the section fill the viewport height */
 }
 
 #introduction-section h1 {
-  font-size: 24px; /* Smaller font size for mobile */
-  margin: 0 0 20px 0; /* Margin-bottom for spacing */
-  color:  #f5f5dc;
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  color: #f5f5dc;
+  text-align: center;
 }
 
 #introduction-section img {
-  width: 200px; /* Image size for mobile */
-  height: 200px; /* Image size for mobile */
-  border-radius: 50%; /* Make the image a circle */
+  width: 200px;
+  height: 200px;
+  border-radius: 50px;
+  border: 3px solid #C9822C;
   object-fit: cover;
-  border: 3px solid #083d77; /* Blue border */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  flex-shrink: 0; /* Prevent the image from shrinking */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Image container for flip effect */
 #introduction-section .intro-image-container {
   position: relative;
-  width: 200px; /* Image container size for mobile */
-  height: 200px; /* Image container size for mobile */
-  perspective: 1000px; /* Give the container 3D perspective */
-}
+  width: 300px;;
+  height: 400px;
+  perspective: 1000px;
+} 
 
-/* The image itself */
-#introduction-section img {
-  position: absolute; /* Stack the images on top of each other */
-  width: 100%;
-  height: 100%;
+#introduction-section .intro-image-container img {
+  position: absolute;
+  width: 300px;
+  height: 400px;
   object-fit: cover;
-  border-radius: 50%; /* Make it circular */
-  border: 3px solid  #f5f5dc; /* cream border */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  transition: transform 0.6s ease, opacity 0.6s ease; /* Smooth flip transition */
+  border-radius: 50px;
+  border: 3px solid #9d5a09;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+} 
+
+#introduction-section .intro-image-container img:nth-child(2) {
+  position: absolute; /* Same as the first image */
+  width: 300px; /* Explicitly set the same size as the first image */
+  height: 400px; /* Match the size of the first image */
+  object-fit: cover; /* Maintain the aspect ratio and cover the container */
+  border-radius: 50px; /* Match the rounded edges */
+  border: 3px solid #9d5a09; /* Same border style */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Same shadow style */
+  transform: rotateY(180deg); /* Initial flip state */
+  opacity: 0; /* Hidden initially */
+  transition: transform 0.6s ease, opacity 0.6s ease; /* Same transition effects */
 }
 
 /* Flip effect when hovering */
 #introduction-section .intro-image-container:hover img:nth-child(1) {
-  transform: rotateY(180deg); /* Flip the first image */
-  opacity: 0; /* Hide the first image */
-}
-
-/* Second image (flipped side) */
-#introduction-section .intro-image-container img:nth-child(2) {
-  transform: rotateY(180deg); /* Initially hide the second image */
+  transform: rotateY(180deg);
   opacity: 0;
 }
 
-/* Show the second image on hover */
+#introduction-section .intro-image-container img:nth-child(2) {
+  transform: rotateY(180deg);
+  opacity: 0;
+}
+
 #introduction-section .intro-image-container:hover img:nth-child(2) {
-  opacity: 1; /* Show the second image */
-  transform: rotateY(0deg); /* Bring the second image to the front */
+  opacity: 1;
+  transform: rotateY(0deg);
 }
 
 /* Media query for larger screens */
 @media (min-width: 768px) {
   #introduction-section {
-    height: 50vh; /* Full viewport height */
-    padding: 170px;
-    flex-direction: row; /* Align items horizontally */
+    flex-direction: row; /* Align elements horizontally */
+    justify-content: space-around; /* Space around text and image */
+    align-items: center; /* Vertically align content */
+    padding: 100px;
+    height: 80vh; /* Ensure the section has enough height */
+    box-sizing: border-box; /* Include padding in height calculation */
   }
 
   #introduction-section h1 {
-    font-size: 55px;
-    margin: 0; /* Remove default margin for better spacing */
-    flex: 1; /* Allow the text to take up available space */
+    font-size: 40px; /* Larger font size for desktop */
+    text-align: left;
+    flex: 1; /* Allow the text to share space */
+    margin-right: 20px; /* Space between text and image */
   }
 
-  #introduction-section img {
-    max-width: 800px; /* Image size for larger screens */
-    max-height: 600px; /* Image size for larger screens */
-    border: 5px solid #083d77; /* Blue border */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  }
-
-  /* Image container for flip effect */
   #introduction-section .intro-image-container {
-    width: 400px; /* Image container size for larger screens */
-    height: 600px; /* Image container size for larger screens */
+    width: 30%; /* Image takes half the width of the section */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 400px; /* Constrain maximum width for large screens */
+    display: flex;
+    justify-content: center; /* Center image in its container */
+    align-items: center;
   }
 
-  /* The image itself */
-  #introduction-section img {
-    border: 5px solid #083d77; /* Blue border */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  #introduction-section .intro-image-container img {
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 20px; /* Adjust border-radius for larger size */
+    border: 5px solid #C9822C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 }
+
+/* Media query for even larger screens */
+@media (min-width: 1200px) {
+  #introduction-section {
+    padding: 150px;
+    height: 90vh; /* Allow even more space for larger screens */
+  }
+
+  #introduction-section h1 {
+    font-size: 50px;
+  }
+
+  #introduction-section .intro-image-container {
+    max-width: 700px; /* Slightly larger image container for larger screens */
+  }
+}
+
+
+
 
 /* Skills Section */
 #skills {
   padding: 100px 20px;
-  background-color: #C9822C; /* Burnt sienna */
+  background-color: #9d5a09; /* Burnt sienna */
   color: #f5f5dc; /* Cream */
   text-align: center;
 }
@@ -268,11 +360,27 @@ nav ul li a:hover {
 }
 
 #about .image img {
-  max-width: 100%;
+  max-width: 100%; /* Restrict width to container */
+  max-height: 300px; /* Limit height to prevent oversizing */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-} 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  object-fit: cover; /* Ensures images scale neatly */
+}
 
+/* Responsive Handling */
+@media (min-width: 1200px) {
+  #about .image img {
+    max-height: 250px; /* Reduce image height for larger screens */
+  }
+}
+
+/* Hover Effect */
+#about .image img:hover {
+  transform: scale(1.05); /* Slight zoom */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
 /* Projects Section */
 #projects {
   display: flex;
@@ -280,55 +388,80 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #083d77; /* Cream */
-  color: #f5f5dc;
+  background-color: #083d77; /* Navy blue background */
+  color: #f5f5dc; /* Cream text color */
+
 }
 
 .project {
   display: flex;
+  flex-direction: column; /* Stack text and images vertically */
   justify-content: space-between;
   align-items: center;
-  width: 80%;
-  max-width: 1200px;
+  width: 90%;
+  min-width: 300px; /* Ensure a minimum width */
   gap: 30px;
   margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #0a4b96, #072f58); /* Subtle gradient for card background */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
 }
 
 .project .text {
   flex: 1;
-  max-width: 60%;
+  width: 100%;
+  text-align: left; /* Left-align the project description text */
 }
 
 .project .text h2 {
   font-size: 32px;
   margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow for title */
+  color: #f5f5dc; /* Set text color explicitly */
+}
+
+.project .text h2 a {
+  text-decoration: underline; /* Underline the title */
+  color: #f5f5dc; /* Cream text color for the link */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.project .text h2 a:hover {
+  color: #9d5a09; /* Change to a highlighted color on hover */
 }
 
 .project .text p {
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin: 0 20px;
 }
 
 .project .image {
-  flex: 1;
   display: flex;
+  flex-direction: row; /* Place images side-by-side */
   justify-content: center;
   align-items: center;
+  gap: 20px; /* Space between images */
+  margin-top: 20px;
 }
 
 .project .image img {
-  max-width: 100%;
+  width: 48%; /* Each image takes up almost half the container width */
+  min-width: 300px; /* Ensure a minimum width for each image */
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid #9d5a09; /* Small border with #9d5a09 color */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for images */
+  transition: transform 0.3s ease; /* Hover effect */
 }
 
-hr {
-  width: 80%;
-  max-width: 1200px;
-  border: 0;
-  border-top: 2px solid #f5f5dc; /* Green divider */
-  margin: 50px 0;
-} 
+.project .image img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+
+
 
 /* Footer Section */
 #footer {
