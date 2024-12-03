@@ -8,6 +8,15 @@ body {
   scroll-behavior: smooth; /* Smooth scrolling effect */
 }
 
+/* CSS to disable all transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
 /* Navbar */
 nav {
   position: fixed; /* Keeps the navbar at the top */
